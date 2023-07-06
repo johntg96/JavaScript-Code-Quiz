@@ -30,8 +30,14 @@ main {
   padding: 20px;
 }
 
-#score-text, #timer-text {
+#score-text, #timer-text, #question-number {
   font-family: monospace;
+  margin-bottom: 2px;
+}
+
+#question-number {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 #question {

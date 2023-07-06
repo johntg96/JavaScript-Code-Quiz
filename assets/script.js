@@ -1,4 +1,5 @@
 const questionDisplay = document.querySelector("#question");
+const questionNumberDisplay = document.querySelector("#question-number")
 const choicesDisplay = document.querySelector("#choices");
 const scoresDisplay = document.querySelector("#score-text");
 const choice1 = document.querySelector("#choice_1");
@@ -70,7 +71,7 @@ const questions = {
     },
     question10: {
         question: "Event bubbling is when..",
-        choices: ["..events propogate up the DOM tree", "..events become inaccessible", "..an error stops the event from firing", "..the event creates a hole in the spacetime continium."],
+        choices: ["..events propogate up the DOM tree", "..events become inaccessible", "..an error stops the event from firing", "..the event creates a hole in the spacetime continium."], // hint: it is not the last one.
         correctAnswer: "choice1",
         userChoice: "blank"
     },
@@ -185,6 +186,7 @@ function submitChoice() {
         viewQuestion(nextQuestion);
     } else {
         gradeQuiz();
+        // TO-DO: Add function to clear the screen and show the results after quiz is done.
     }
     
 }
@@ -192,6 +194,7 @@ function submitChoice() {
 function viewQuestion(questionNum) {
 
     console.log(`Current score: ${score}`);
+    questionNumberDisplay.textContent = `Question ${currentQuestion}`;
 
     switch (questionNum) {
         case 1:
