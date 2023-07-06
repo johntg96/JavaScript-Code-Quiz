@@ -51,26 +51,26 @@ const questions = {
         userChoice: "blank"
     },
     question7: {
-        question: "question 7 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "localStorage can hold what types of data?",
+        choices: ["numbers and strings", "numbers, strings, booleans", "objects and arrays", "only strings"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question8: {
-        question: "question 8 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "How do you access an array item by index value?",
+        choices: ["array[i]", "array.i", "array(i)", "array.item()"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question9: {
-        question: "question 9 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "What is an example of a float datatype?",
+        choices: ["12.245", "34", "twelve", "[0,1,2]"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question10: {
-        question: "question 10 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "Event bubbling is when..",
+        choices: ["..events propogate up the DOM tree", "..events become inaccessible", "..an error stops the event from firing", "..the event creates a hole in the spacetime continium."],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
