@@ -7,7 +7,8 @@ const choice4 = document.querySelector("#choice_4");
 const submitChoiceBtn = document.querySelector("#submit-choice");
 
 let score = 0;
-let time = 0;
+let letterGrade = "";
+let timeLeft = 80; // TO-DO: Implement Timer functions, setTimeout, etc.
 
 let currentQuestion = 1;
 
@@ -179,7 +180,7 @@ function submitChoice() {
 
     storeUserChoice(currentQuestion, userChoice);
 
-    if (currentQuestion <= 10) {
+    if (currentQuestion < 10) {
         let nextQuestion = currentQuestion += 1;
         viewQuestion(nextQuestion);
     } else {
@@ -269,10 +270,34 @@ function viewQuestion(questionNum) {
 }
 
 function gradeQuiz() {
-    // TO-DO: write function to provide results to user about how they performed on the quiz.
     // This function will show the results
     // score/10
     // ..maybe assign letter grade to score and return it.
+
+    switch (true) {
+        case (score == 10):
+            letterGrade = 'A+';
+            break;
+        case (score == 9):
+            letterGrade = 'A';
+            break;
+        case (score == 8):
+            letterGrade = 'B';
+            break;
+        case (score == 7):
+            letterGrade = 'C';
+            break;
+        case (score == 6):
+            letterGrade = 'D';
+            break;
+        case (score <= 5):
+            letterGrade = 'F';
+            break;
+        default:
+            break;
+    }
+
+    console.log(`Your Score: ${score} out of 10\nLetter Grade: ${letterGrade}`);
 }
 
 submitChoiceBtn.addEventListener("click", submitChoice);
