@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  font-family: 'Lilita One', cursive;
+  font-size: 30px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#mainContainer {
+  width: 300px;
+  height: auto;
+  margin: 20px;
+}
+
+#question {
+  margin-bottom: 20px;
+}
