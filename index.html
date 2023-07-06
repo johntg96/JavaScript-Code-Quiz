@@ -9,9 +9,14 @@
 </head>
 <body>
     <header>
-        <h1>Code Quiz</h1>
+        <h1>code_quiz <span style="color:gray;font-family:monospace;font-size:10px;">&nbsp;&nbsp;// hints in the source code</span></h1>
     </header>
+    <hr/>
     <main>
+        <div id="scoreContainer">
+            <h2 id="score-text">score: 0</h2>
+            <h2 id="timer-text">timer: 120</h2>
+        </div>
         <div id="mainContainer">
             <h2 id="question"></h2>
             <form>
@@ -29,8 +34,10 @@
                 <br/>
             </form>
         </div>
+        <!-- create another div to show results. Will become visible via CSS property toggle when quiz is finished.-->
         <button id="submit-choice">Submit</button>
     </main>
+    <hr/>
     <script src="./assets/script.js"></script>
 </body>
 </html>

@@ -3,9 +3,10 @@
 header h1 {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 30px;
   font-family: 'Lilita One', cursive;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 main {
@@ -16,11 +17,31 @@ main {
 }
 
 #mainContainer {
-  width: 300px;
+  width: auto;
   height: auto;
-  margin: 20px;
+  margin: 50px;
+  background-color: lightgray;
+  border-radius: 6px;
+  border: 1px solid gray;
+  padding: 20px;
+}
+
+#scoreContainer {
+  padding: 20px;
+}
+
+#score-text, #timer-text {
+  font-family: monospace;
 }
 
 #question {
   margin-bottom: 20px;
+}
+
+input {
+  margin: 8px;
+}
+
+#submit-choice {
+  margin-bottom: 40px;
 }

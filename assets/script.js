@@ -1,5 +1,6 @@
 const questionDisplay = document.querySelector("#question");
 const choicesDisplay = document.querySelector("#choices");
+const scoresDisplay = document.querySelector("#score-text");
 const choice1 = document.querySelector("#choice_1");
 const choice2 = document.querySelector("#choice_2");
 const choice3 = document.querySelector("#choice_3");
@@ -14,38 +15,38 @@ let currentQuestion = 1;
 
 const questions = {
     question1: {
-        question: "How much wood can a woodchuck chuck?",
-        choices: ["a lot", "some", "not enough", "as much wood as a woodchuck could"],
-        correctAnswer: "choice4",
+        question: "Which method will turn an object into a JSON string?",
+        choices: ["JSON.stringify(obj);", "JSON.parse(obj);", "JSON.strConv(obj);", "JSON.toText(obj);"],
+        correctAnswer: "choice1",
         userChoice: "blank"
     },
     question2: {
-        question: "question 2 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: 'What Does "ECMA" in ECMAScript stand for?',
+        choices: ["European Computer Manufacturer's Association", "Eastern China Mobile Application", "Exact Calculation Main Asynchronous", "Earth Community of Mammal Apes"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question3: {
-        question: "question 3 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "To center a flexbox container one can use the justify-content property and the ___________-items property",
+        choices: ["align", "join", "spread", "push"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question4: {
-        question: "question 4 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "What does the array.push() method do?",
+        choices: ["adds element to end of array", "adds element to beginning of array", "pushes off the last element from the array", "deletes the first element in an array"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question5: {
-        question: "question 5 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "What git command is used to add changes to the stage?",
+        choices: ["git add -A", "git merge", "git pull", "git commit -m"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question6: {
-        question: "question 6 will go here",
-        choices: ["first choice", "second choice", "third choice", "fourth choice"],
+        question: "Reloading of the webpage on certain events can be prevented with:",
+        choices: ["event.preventDefault();", "event.defaultPrevent();", "event.stopReload();", "event.reloadStop();"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
@@ -82,11 +83,9 @@ function storeUserChoice(questionNum, choicePick) {
             if (choicePick == questions.question1.correctAnswer) {
                 score++;
                 // console.log(`ChoicePick: ${choicePick}\nCorrect Answer: ${questions.question1.correctAnswer}\nscore: ${score}`);
-                alert("Correct");
                 return score;
             } else {
                 // console.log(`score: ${score}`);
-                alert("Wrong");
                 return score;
             }
         case 2:
@@ -179,6 +178,7 @@ function submitChoice() {
     }
 
     storeUserChoice(currentQuestion, userChoice);
+    scoresDisplay.textContent = `Score: ${score}`;
 
     if (currentQuestion < 10) {
         let nextQuestion = currentQuestion += 1;
