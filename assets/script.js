@@ -81,9 +81,11 @@ function storeUserChoice(questionNum, choicePick) {
             if (choicePick == questions.question1.correctAnswer) {
                 score++;
                 // console.log(`ChoicePick: ${choicePick}\nCorrect Answer: ${questions.question1.correctAnswer}\nscore: ${score}`);
+                alert("Correct");
                 return score;
             } else {
                 // console.log(`score: ${score}`);
+                alert("Wrong");
                 return score;
             }
         case 2:
@@ -164,8 +166,6 @@ function storeUserChoice(questionNum, choicePick) {
 }
 
 function submitChoice() {
-    alert("submit button clicked");
-
     const radios = document.getElementsByName('choice');
     let userChoice = "";
 
