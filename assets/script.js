@@ -292,17 +292,17 @@ function gradeQuiz() {
     switch (true) {
         case (score == 10):
             letterGrade = 'A+';
-            letterGradeDisplay.textContent = `Perfect Score! ${letterGrade}`;
+            letterGradeDisplay.textContent = `Perfect Score! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             break;
         case (score == 9):
             letterGrade = 'A';
-            letterGradeDisplay.textContent = `Great Job! ${letterGrade}`;
+            letterGradeDisplay.textContent = `Great Job! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             break;
         case (score == 8):
             letterGrade = 'B';
-            letterGradeDisplay.textContent = `Not bad! ${letterGrade}`;
+            letterGradeDisplay.textContent = `Not bad! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'green';
             resultsDisplay.style.color = 'white';
             break;
