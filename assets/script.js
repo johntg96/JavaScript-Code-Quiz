@@ -337,9 +337,9 @@ viewQuestion(1);
 setInterval(() => {
     if (timeLeft > 0) {
         // minor color change to timer to signify low(er) on time
-        if (timeLeft < 60) {
-            timerDisplay.style.color = 'yellow';
-            if (timeLeft < 30) {
+        if (timeLeft <= 60) {
+            timerDisplay.style.color = 'orange';
+            if (timeLeft <= 30) {
                 timerDisplay.style.color = 'red';
             }
         }
