@@ -64,8 +64,8 @@ const questions = {
         userChoice: "blank"
     },
     question8: {
-        question: "How do you access an array item by index value?", // hint: bracket notation
-        choices: ["array[i]", "array.i", "array(i)", "array.item()"],
+        question: "How do you access an array item at index value 1?", // hint: bracket notation
+        choices: ["myArray[1]", "myArray.1", "myArray(1)", "myArray.itemAtIndex(1)"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
@@ -337,9 +337,9 @@ viewQuestion(1);
 setInterval(() => {
     if (timeLeft > 0) {
         // minor color change to timer to signify low(er) on time
-        if (timeLeft <= 60) {
+        if (timeLeft < 61) {
             timerDisplay.style.color = 'orange';
-            if (timeLeft <= 30) {
+            if (timeLeft < 31) {
                 timerDisplay.style.color = 'red';
             }
         }
