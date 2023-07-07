@@ -13,6 +13,7 @@ const choice2 = document.querySelector("#choice_2");
 const choice3 = document.querySelector("#choice_3");
 const choice4 = document.querySelector("#choice_4");
 const submitChoiceBtn = document.querySelector("#submit-choice");
+const resetBtn = document.querySelector("#reset")
 
 let score = 0;
 let letterGrade = "";
@@ -192,12 +193,15 @@ function submitChoice() {
         viewQuestion(nextQuestion);
     } else {
         gradeQuiz();
-        // TO-DO: Add function to clear the screen and show the results after quiz is done.
     }
     
 }
 
 function viewQuestion(questionNum) {
+
+    mainContainer.style.display = 'block';
+    submitChoiceBtn.style.display = 'block';
+    resultsDisplay.style.visibility = 'hidden';
 
     console.log(`Current score: ${score}`);
     questionNumberDisplay.textContent = `Question ${currentQuestion}`;
@@ -287,29 +291,30 @@ function gradeQuiz() {
     submitChoiceBtn.style.display = 'none';
     resultsDisplay.style.visibility = 'visible';
 
-    
-
     switch (true) {
         case (score == 10):
             letterGrade = 'A+';
             letterGradeDisplay.textContent = `Perfect Score! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
+            resultsDisplay.style.color = 'black';
             break;
         case (score == 9):
             letterGrade = 'A';
             letterGradeDisplay.textContent = `Great Job! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
+            resultsDisplay.style.color = 'black';
             break;
         case (score == 8):
             letterGrade = 'B';
             letterGradeDisplay.textContent = `Not bad! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'green';
-            resultsDisplay.style.color = 'white';
+            resultsDisplay.style.color = 'black';
             break;
         case (score == 7):
             letterGrade = 'C';
             letterGradeDisplay.textContent = `You did alright. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightyellow';
+            resultsDisplay.style.color = 'black';
             break;
         case (score == 6):
             letterGrade = 'D';
@@ -330,6 +335,19 @@ function gradeQuiz() {
 }
 
 submitChoiceBtn.addEventListener("click", submitChoice);
+
+resetBtn.addEventListener('click', () => {
+    // When reset button is clicked, reset values and currentQuestion to default beginning values.
+    score = 0;
+    scoresDisplay.textContent = `score: ${score}`;
+    letterGrade = ``;
+    letterGradeDisplay.textContent = letterGrade;
+    timeLeft = 120;
+    timerDisplay.textContent = timeLeft;
+    currentQuestion = 1;
+
+    viewQuestion(1);
+});
 
 viewQuestion(1);
 

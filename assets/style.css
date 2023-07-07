@@ -58,6 +58,10 @@ input {
   margin-bottom: 40px;
 }
 
+#reset {
+  margin-bottom: 20px;
+}
+
 #results {
   visibility: hidden;
   background-color: lightgray;
