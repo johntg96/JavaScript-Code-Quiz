@@ -1,3 +1,5 @@
+// TO-DO: 
+
 const questionDisplay = document.querySelector("#question");
 const questionNumberDisplay = document.querySelector("#question-number")
 const choicesDisplay = document.querySelector("#choices");
@@ -20,61 +22,61 @@ let currentQuestion = 1;
 
 const questions = {
     question1: {
-        question: "Which method will turn an object into a JSON string?",
+        question: "Which method will turn an object into a JSON string?", // hint: string cheese is delicious
         choices: ["JSON.stringify(obj);", "JSON.parse(obj);", "JSON.strConv(obj);", "JSON.toText(obj);"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question2: {
-        question: 'What Does "ECMA" in ECMAScript stand for?',
+        question: 'What Does "ECMA" in ECMAScript stand for?', // hint: I like Europe
         choices: ["European Computer Manufacturer's Association", "Eastern China Mobile Application", "Exact Calculation Main Asynchronous", "Earth Community of Mammal Apes"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question3: {
-        question: "To center a flexbox container one can use the justify-content property and the ___________-items property",
+        question: "To center a flexbox container one can use the justify-content property and the ___________-items property", // hint: CSS flexbox questions should always be googled
         choices: ["align", "join", "spread", "push"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question4: {
-        question: "What does the array.push() method do?",
+        question: "What does the array.push() method do?", // hint: push it onto the end. lil bump onto the end.
         choices: ["adds element to end of array", "adds element to beginning of array", "pushes off the last element from the array", "deletes the first element in an array"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question5: {
-        question: "What git command is used to add changes to the stage?",
+        question: "What git command is used to add changes to the stage?", // hint: probably the one you are guessing.
         choices: ["git add -A", "git merge", "git pull", "git commit -m"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question6: {
-        question: "Reloading of the webpage on certain events can be prevented with:",
+        question: "Reloading of the webpage on certain events can be prevented with:", // hint: prevent the default behavior
         choices: ["event.preventDefault();", "event.defaultPrevent();", "event.stopReload();", "event.reloadStop();"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question7: {
-        question: "localStorage can hold what types of data?",
+        question: "localStorage can hold what types of data?", // hint: only two "simple" data types
         choices: ["numbers and strings", "numbers, strings, booleans", "objects and arrays", "only strings"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question8: {
-        question: "How do you access an array item by index value?",
+        question: "How do you access an array item by index value?", // hint: bracket notation
         choices: ["array[i]", "array.i", "array(i)", "array.item()"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question9: {
-        question: "What is an example of a float datatype?",
+        question: "What is an example of a float datatype?", // hint: decimals
         choices: ["12.245", "34", "twelve", "[0,1,2]"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question10: {
-        question: "Event bubbling is when..",
+        question: "Event bubbling is when..", // hint: Something to do with propogation.
         choices: ["..events propogate up the DOM tree", "..events become inaccessible", "..an error stops the event from firing", "..the event creates a hole in the spacetime continium."], // hint: it is not the last one.
         correctAnswer: "choice1",
         userChoice: "blank"
@@ -334,8 +336,15 @@ viewQuestion(1);
 // Subtract 1 from total time left each second.
 setInterval(() => {
     if (timeLeft > 0) {
+        // minor color change to timer to signify low(er) on time
+        if (timeLeft < 60) {
+            timerDisplay.style.color = 'yellow';
+            if (timeLeft < 30) {
+                timerDisplay.style.color = 'red';
+            }
+        }
         timeLeft--;
-        timerDisplay.textContent = `timer: ${timeLeft}`;
+        timerDisplay.textContent = timeLeft;
     } else {
         gradeQuiz();
     }
