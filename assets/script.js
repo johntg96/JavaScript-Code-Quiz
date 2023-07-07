@@ -2,6 +2,10 @@ const questionDisplay = document.querySelector("#question");
 const questionNumberDisplay = document.querySelector("#question-number")
 const choicesDisplay = document.querySelector("#choices");
 const scoresDisplay = document.querySelector("#score-text");
+const timerDisplay = document.querySelector("#timer-text");
+const mainContainer = document.querySelector("#mainContainer");
+const resultsDisplay = document.querySelector("#results");
+const letterGradeDisplay = document.querySelector("#letter-grade");
 const choice1 = document.querySelector("#choice_1");
 const choice2 = document.querySelector("#choice_2");
 const choice3 = document.querySelector("#choice_3");
@@ -10,7 +14,7 @@ const submitChoiceBtn = document.querySelector("#submit-choice");
 
 let score = 0;
 let letterGrade = "";
-let timeLeft = 80; // TO-DO: Implement Timer functions, setTimeout, etc.
+let timeLeft = 120; // TO-DO: Implement Timer function to remove seconds from timer when incorrect answer chosen.
 
 let currentQuestion = 1;
 
@@ -277,24 +281,44 @@ function gradeQuiz() {
     // score/10
     // ..maybe assign letter grade to score and return it.
 
+    mainContainer.style.display = 'none';
+    submitChoiceBtn.style.display = 'none';
+    resultsDisplay.style.visibility = 'visible';
+
+    
+
     switch (true) {
         case (score == 10):
             letterGrade = 'A+';
+            letterGradeDisplay.textContent = `Perfect Score! ${letterGrade}`;
+            resultsDisplay.style.backgroundColor = 'lightgreen';
             break;
         case (score == 9):
             letterGrade = 'A';
+            letterGradeDisplay.textContent = `Great Job! ${letterGrade}`;
+            resultsDisplay.style.backgroundColor = 'lightgreen';
             break;
         case (score == 8):
             letterGrade = 'B';
+            letterGradeDisplay.textContent = `Not bad! ${letterGrade}`;
+            resultsDisplay.style.backgroundColor = 'green';
+            resultsDisplay.style.color = 'white';
             break;
         case (score == 7):
             letterGrade = 'C';
+            letterGradeDisplay.textContent = `You did alright. Grade: ${letterGrade}`;
+            resultsDisplay.style.backgroundColor = 'lightyellow';
             break;
         case (score == 6):
             letterGrade = 'D';
+            letterGradeDisplay.textContent = `You could have done better. Grade: ${letterGrade}`;
+            resultsDisplay.style.backgroundColor = 'lightred';
             break;
         case (score <= 5):
             letterGrade = 'F';
+            letterGradeDisplay.textContent = `You failed. Grade: ${letterGrade}`;
+            resultsDisplay.style.backgroundColor = 'red';
+            resultsDisplay.style.color = 'white';
             break;
         default:
             break;
@@ -306,3 +330,13 @@ function gradeQuiz() {
 submitChoiceBtn.addEventListener("click", submitChoice);
 
 viewQuestion(1);
+
+// Subtract 1 from total time left each second.
+setInterval(() => {
+    if (timeLeft > 0) {
+        timeLeft--;
+        timerDisplay.textContent = `timer: ${timeLeft}`;
+    } else {
+        gradeQuiz();
+    }
+}, 1000)

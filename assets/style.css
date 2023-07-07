@@ -51,3 +51,14 @@ input {
 #submit-choice {
   margin-bottom: 40px;
 }
+
+#results {
+  visibility: hidden;
+  background-color: lightgray;
+  border-radius: 6px;
+  border: 1px solid gray;
+  padding: 20px;
+  display: flex;
+  margin: 4px;
+  margin-bottom: 20px;
+}
