@@ -371,9 +371,11 @@ function updateHighScores(scoreNum) {
     // adds score to list if it is not already on it, sorts best to worst, then stores it in storage:
     if (!highScores.includes(scoreNum)) {
         console.log(`unique score`);
+        // add first 3 largest numbers of array to high score list:
         highScores.push(scoreNum);
-        highScores.sort((a,b) => b -a); // argument sorts the array descending instead of ascending
-        localStorage.setItem(`highScores`, JSON.stringify(highScores));
+        highScores.sort((a, b) => b -a)
+        // store top 3 scores in local storage:
+        localStorage.setItem(`highScores`, JSON.stringify(highScores.slice(0,3)));
 
         console.log(JSON.parse(localStorage.getItem(`highScores`)));
         displayScores();
