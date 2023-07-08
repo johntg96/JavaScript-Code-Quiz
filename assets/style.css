@@ -29,6 +29,10 @@ main {
 
 #scoreContainer {
   padding: 20px;
+  display: flex;
+  gap: 5px;
+  align-items: left;
+  flex-direction: column;
 }
 
 #score-text, #timer-text, #question-number {
@@ -39,6 +43,10 @@ main {
 #timer-text {
   color: green;
   font-size: 20px;
+}
+
+#high-scores {
+  display: block;
 }
 
 #question-number {

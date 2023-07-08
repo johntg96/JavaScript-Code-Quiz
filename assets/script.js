@@ -5,6 +5,10 @@ const questionNumberDisplay = document.querySelector("#question-number")
 const choicesDisplay = document.querySelector("#choices");
 const scoresDisplay = document.querySelector("#score-text");
 const timerDisplay = document.querySelector("#timer-text");
+const highScoreListDisplay = document.querySelector("#high-scores");
+const highScore1Display = document.querySelector("#high-score-1");
+const highScore2Display = document.querySelector("#high-score-2");
+const highScore3Display = document.querySelector("#high-score-3");
 const mainContainer = document.querySelector("#mainContainer");
 const resultsDisplay = document.querySelector("#results");
 const letterGradeDisplay = document.querySelector("#letter-grade");
@@ -17,67 +21,68 @@ const resetBtn = document.querySelector("#reset")
 
 let score = 0;
 let letterGrade = "";
-let timeLeft = 120; // TO-DO: Implement Timer function to remove seconds from timer when incorrect answer chosen.
+let timeLeft = 10; // TO-DO: Implement Timer function to remove seconds from timer when incorrect answer chosen.
+let highScores = [];
 
 let currentQuestion = 1;
 
 const questions = {
     question1: {
-        question: "Which method will turn an object into a JSON string?", // hint: string cheese is delicious
-        choices: ["JSON.stringify(obj);", "JSON.parse(obj);", "JSON.strConv(obj);", "JSON.toText(obj);"],
+        question: "Which method will turn an object into a JSON string? +3pts", // hint: string cheese is delicious
+        choices: ["JSON.stringify(obj);", "JSON.parse('str');", "JSON.strConv('str');", "JSON.toText(obj);"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question2: {
-        question: 'What Does "ECMA" in ECMAScript stand for?', // hint: I like Europe
+        question: 'What Does "ECMA" in ECMAScript stand for? +2pts', // hint: I like Europe
         choices: ["European Computer Manufacturer's Association", "Eastern China Mobile Application", "Exact Calculation Main Asynchronous", "Earth Community of Mammal Apes"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question3: {
-        question: "To center a flexbox container one can use the justify-content property and the ___________-items property", // hint: CSS flexbox questions should always be googled
+        question: "To center a flexbox container one can use the justify-content property and the ___________-items property +1pt", // hint: CSS flexbox questions should always be googled
         choices: ["align", "join", "spread", "push"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question4: {
-        question: "What does the array.push() method do?", // hint: push it onto the end. lil bump onto the end.
+        question: "What does the array.push() method do? +2pts", // hint: push it onto the end. lil bump onto the end.
         choices: ["adds element to end of array", "adds element to beginning of array", "pushes off the last element from the array", "deletes the first element in an array"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question5: {
-        question: "What git command is used to add changes to the stage?", // hint: probably the one you are guessing.
+        question: "What git command is used to add changes to the stage? +1pt", // hint: probably the one you are guessing.
         choices: ["git add -A", "git merge", "git pull", "git commit -m"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question6: {
-        question: "Reloading of the webpage on certain events can be prevented with:", // hint: prevent the default behavior
+        question: "Reloading of the webpage on certain events can be prevented with: +1pt", // hint: prevent the default behavior
         choices: ["event.preventDefault();", "event.defaultPrevent();", "event.stopReload();", "event.reloadStop();"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question7: {
-        question: "localStorage can hold what types of data?", // hint: only two "simple" data types
+        question: "localStorage can hold what types of data? +2pts", // hint: only two "simple" data types
         choices: ["numbers and strings", "numbers, strings, booleans", "objects and arrays", "only strings"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question8: {
-        question: "How do you access an array item at index value 1?", // hint: bracket notation
+        question: "How do you access an array item at index value 1? +2pts", // hint: bracket notation
         choices: ["myArray[1]", "myArray.1", "myArray(1)", "myArray.itemAtIndex(1)"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question9: {
-        question: "What is an example of a float datatype?", // hint: decimals
+        question: "What is an example of a float datatype? +1pt", // hint: decimals
         choices: ["12.245", "34", "twelve", "[0,1,2]"],
         correctAnswer: "choice1",
         userChoice: "blank"
     },
     question10: {
-        question: "Event bubbling is when..", // hint: Something to do with propogation.
+        question: "Event bubbling is when.. +2pts", // hint: Something to do with propogation.
         choices: ["..events propogate up the DOM tree", "..events become inaccessible", "..an error stops the event from firing", "..the event creates a hole in the spacetime continium."], // hint: it is not the last one.
         correctAnswer: "choice1",
         userChoice: "blank"
@@ -89,83 +94,93 @@ function storeUserChoice(questionNum, choicePick) {
         case 1:
             questions.question1.userChoice = choicePick;
             if (choicePick == questions.question1.correctAnswer) {
-                score++;
+                score += 3;
                 // console.log(`ChoicePick: ${choicePick}\nCorrect Answer: ${questions.question1.correctAnswer}\nscore: ${score}`);
                 return score;
             } else {
                 // console.log(`score: ${score}`);
+                timeLeft -= 20;
                 return score;
             }
         case 2:
             questions.question2.userChoice = choicePick;
             if (choicePick == questions.question2.correctAnswer) {
-                score++;
+                score += 2;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 3:
             questions.question3.userChoice = choicePick;
             if (choicePick == questions.question3.correctAnswer) {
-                score++;
+                score += 1; // or could use: score++ here
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 4:
             questions.question4.userChoice = choicePick;
             if (choicePick == questions.question4.correctAnswer) {
-                score++;
+                score += 2;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 5:
             questions.question5.userChoice = choicePick;
             if (choicePick == questions.question5.correctAnswer) {
-                score++;
+                score += 1;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 6:
             questions.question6.userChoice = choicePick;
             if (choicePick == questions.question6.correctAnswer) {
-                score++;
+                score += 1;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 7:
             questions.question7.userChoice = choicePick;
             if (choicePick == questions.question7.correctAnswer) {
-                score++;
+                score += 2;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 8:
             questions.question8.userChoice = choicePick;
             if (choicePick == questions.question8.correctAnswer) {
-                score++;
+                score += 2;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 9:
             questions.question9.userChoice = choicePick;
             if (choicePick == questions.question9.correctAnswer) {
-                score++;
+                score += 1;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         case 10:
             questions.question10.userChoice = choicePick;
             if (choicePick == questions.question10.correctAnswer) {
-                score++;
+                score += 2;
                 return score;
             } else {
+                timeLeft -= 20;
                 return score;
             }
         default:
@@ -174,30 +189,37 @@ function storeUserChoice(questionNum, choicePick) {
 }
 
 function submitChoice() {
-    const radios = document.getElementsByName('choice');
-    let userChoice = "";
-
-    // loop to check which radio input on the page is checked
-    for (let i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            userChoice = radios[i].value;
-            break;
+    // end quiz if time is up. The check is done here because it is the easiest place to do so.
+    if (timeLeft <= 0) {
+        gradeQuiz();
+    } else {
+        const radios = document.getElementsByName('choice');
+        let userChoice = "";
+    
+        // loop to check which radio input on the page is checked
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                userChoice = radios[i].value;
+                break;
+            }
+        }
+    
+        storeUserChoice(currentQuestion, userChoice);
+        scoresDisplay.textContent = `Score: ${score}`;
+    
+        if (currentQuestion < 10) {
+            let nextQuestion = currentQuestion += 1;
+    
+            viewQuestion(nextQuestion);
+        } else {
+            gradeQuiz();
         }
     }
-
-    storeUserChoice(currentQuestion, userChoice);
-    scoresDisplay.textContent = `Score: ${score}`;
-
-    if (currentQuestion < 10) {
-        let nextQuestion = currentQuestion += 1;
-        viewQuestion(nextQuestion);
-    } else {
-        gradeQuiz();
-    }
-    
 }
 
 function viewQuestion(questionNum) {
+
+    console.log(timeLeft);
 
     mainContainer.style.display = 'block';
     submitChoiceBtn.style.display = 'block';
@@ -308,7 +330,7 @@ function gradeQuiz() {
             letterGrade = 'B';
             letterGradeDisplay.textContent = `Not bad! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'green';
-            resultsDisplay.style.color = 'black';
+            resultsDisplay.style.color = 'white';
             break;
         case (score == 7):
             letterGrade = 'C';
@@ -319,7 +341,8 @@ function gradeQuiz() {
         case (score == 6):
             letterGrade = 'D';
             letterGradeDisplay.textContent = `You could have done better. Grade: ${letterGrade}`;
-            resultsDisplay.style.backgroundColor = 'lightred';
+            resultsDisplay.style.backgroundColor = 'brown';
+            resultsDisplay.style.color = 'white';
             break;
         case (score <= 5):
             letterGrade = 'F';
@@ -331,8 +354,32 @@ function gradeQuiz() {
             break;
     }
 
-    console.log(`Your Score: ${score} out of 10\nLetter Grade: ${letterGrade}`);
+    console.log(`Your Score: ${score} out of 17\nLetter Grade: ${letterGrade}`);
+    updateHighScores(score);
 }
+
+function updateHighScores(scoreNum) {
+
+    highScores.push(scoreNum);
+    highScores.sort()
+    localStorage.setItem(`highScores`, JSON.stringify(highScores));
+
+    console.log(JSON.parse(localStorage.getItem(`highScores`)));
+    displayScores();
+}
+
+function displayScores() {
+    highScoreList = JSON.parse(localStorage.getItem(`highScores`));
+    highScore1Display.textContent = highScoreList[0];
+    highScore2Display.textContent = highScoreList[1];
+    highScore3Display.textContent = highScoreList[2];
+}
+
+function clearHighScores() {
+    localStorage.clear();
+}
+
+// clearHighScores();
 
 submitChoiceBtn.addEventListener("click", submitChoice);
 
@@ -344,6 +391,7 @@ resetBtn.addEventListener('click', () => {
     letterGradeDisplay.textContent = letterGrade;
     timeLeft = 120;
     timerDisplay.textContent = timeLeft;
+    timerDisplay.style.color = `green`;
     currentQuestion = 1;
 
     viewQuestion(1);
@@ -363,7 +411,5 @@ setInterval(() => {
         }
         timeLeft--;
         timerDisplay.textContent = timeLeft;
-    } else {
-        gradeQuiz();
     }
 }, 1000)
