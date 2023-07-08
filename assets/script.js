@@ -314,7 +314,7 @@ function viewQuestion(questionNum) {
 
 function gradeQuiz() {
     // This function will show the results
-    // score/10
+    // possible points 17 out of 17.
     // ..maybe assign letter grade to score and return it.
 
     mainContainer.style.display = 'none';
