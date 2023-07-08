@@ -360,7 +360,7 @@ function gradeQuiz() {
 
 function updateHighScores(scoreNum) {
     highScores.push(scoreNum);
-    highScores.sort()
+    highScores.sort((a,b) => b -a); // argument sorts the array descending instead of ascending
     localStorage.setItem(`highScores`, JSON.stringify(highScores));
 
     console.log(JSON.parse(localStorage.getItem(`highScores`)));
@@ -369,6 +369,7 @@ function updateHighScores(scoreNum) {
 
 function displayScores() {
     highScoreList = JSON.parse(localStorage.getItem(`highScores`));
+    highScoreList.sort((a,b) => b - a);
     highScore1Display.textContent = highScoreList[0];
     highScore2Display.textContent = highScoreList[1];
     highScore3Display.textContent = highScoreList[2];
