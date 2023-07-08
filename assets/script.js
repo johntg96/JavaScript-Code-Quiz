@@ -19,6 +19,7 @@ const choice3 = document.querySelector("#choice_3");
 const choice4 = document.querySelector("#choice_4");
 const submitChoiceBtn = document.querySelector("#submit-choice");
 const resetBtn = document.querySelector("#reset")
+const viewHighScoresBtn = document.querySelector("#view-high-scores");
 
 let score = 0;
 let letterGrade = "";
@@ -231,7 +232,6 @@ function viewQuestion(questionNum) {
     mainContainer.style.display = 'block';
     submitChoiceBtn.style.display = 'block';
     resultsDisplay.style.visibility = 'hidden';
-    highScoreListDisplay.style.display = 'none';
 
     console.log(`Current score: ${score}`);
     questionNumberDisplay.textContent = `Question ${currentQuestion}`;
@@ -409,6 +409,19 @@ resetBtn.addEventListener('click', () => {
     currentQuestion = 1;
 
     viewQuestion(1);
+});
+
+// toggle showing high score list on screen via `#view-high-scores` button
+viewHighScoresBtn.addEventListener("click", () => {
+    if (highScoreListDisplay.style.display == 'none') {
+        highScoreListDisplay.style.display = 'block';
+        viewHighScoresBtn.textContent = `Hide High Scores`;
+        viewHighScoresBtn.style.backgroundColor = `#8d910c`;
+    } else {
+        highScoreListDisplay.style.display = 'none';
+        viewHighScoresBtn.textContent = `View High Scores`;
+        viewHighScoresBtn.style.backgroundColor = `#b2b419`;
+    }
 });
 
 viewQuestion(1);

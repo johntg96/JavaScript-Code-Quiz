@@ -50,6 +50,20 @@ main {
   display: none;
 }
 
+#high-scores h2 {
+  margin-top: 10px;
+}
+
+#high-scores ol {
+  margin-top: 10px;
+}
+
+#high-scores ol li {
+  font-family: monospace;
+  font-size: 16px;
+  list-style: decimal;
+}
+
 .action-button-container {
   display: flex;
   justify-content: center;
