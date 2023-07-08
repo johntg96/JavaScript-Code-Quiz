@@ -1,4 +1,5 @@
-// TO-DO: 
+// TO-DO: Create function/event listener for feature of clearing high score list.
+// TO-DO: Create function to update highScores array with data from local storage.
 
 const questionDisplay = document.querySelector("#question");
 const questionNumberDisplay = document.querySelector("#question-number")
@@ -316,37 +317,37 @@ function gradeQuiz() {
     switch (true) {
         case (score == 17):
             letterGrade = 'A+';
-            letterGradeDisplay.textContent = `Perfect Score! Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `Perfect Score! ${score} out of 17. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             resultsDisplay.style.color = 'black';
             break;
         case (score >= 13):
             letterGrade = 'A';
-            letterGradeDisplay.textContent = `Great Job! Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `Great Job! ${score} out of 17. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             resultsDisplay.style.color = 'black';
             break;
         case (score >= 10):
             letterGrade = 'B';
-            letterGradeDisplay.textContent = `Not bad! Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `Not bad! ${score} out of 17. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'green';
             resultsDisplay.style.color = 'white';
             break;
         case (score >= 7):
             letterGrade = 'C';
-            letterGradeDisplay.textContent = `You did alright. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `You did alright. ${score} out of 17. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightyellow';
             resultsDisplay.style.color = 'black';
             break;
         case (score == 6):
             letterGrade = 'D';
-            letterGradeDisplay.textContent = `You could have done better. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `You could have done better. ${score} out of 17. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'brown';
             resultsDisplay.style.color = 'white';
             break;
         case (score <= 5):
             letterGrade = 'F';
-            letterGradeDisplay.textContent = `You failed. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `You failed. ${score} out of 17. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'red';
             resultsDisplay.style.color = 'white';
             break;
@@ -369,7 +370,6 @@ function updateHighScores(scoreNum) {
 
 function displayScores() {
     highScoreList = JSON.parse(localStorage.getItem(`highScores`));
-    highScoreList.sort((a,b) => b - a);
     highScore1Display.textContent = highScoreList[0];
     highScore2Display.textContent = highScoreList[1];
     highScore3Display.textContent = highScoreList[2];
