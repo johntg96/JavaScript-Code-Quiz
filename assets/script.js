@@ -231,6 +231,7 @@ function viewQuestion(questionNum) {
     mainContainer.style.display = 'block';
     submitChoiceBtn.style.display = 'block';
     resultsDisplay.style.visibility = 'hidden';
+    highScoreListDisplay.style.display = 'none';
 
     console.log(`Current score: ${score}`);
     questionNumberDisplay.textContent = `Question ${currentQuestion}`;
@@ -319,6 +320,7 @@ function gradeQuiz() {
     mainContainer.style.display = 'none';
     submitChoiceBtn.style.display = 'none';
     resultsDisplay.style.visibility = 'visible';
+    highScoreListDisplay.style.display = 'block';
 
     switch (true) {
         case (score == 17):
@@ -366,12 +368,16 @@ function gradeQuiz() {
 }
 
 function updateHighScores(scoreNum) {
-    highScores.push(scoreNum);
-    highScores.sort((a,b) => b -a); // argument sorts the array descending instead of ascending
-    localStorage.setItem(`highScores`, JSON.stringify(highScores));
+    // adds score to list if it is not already on it, sorts best to worst, then stores it in storage:
+    if (!highScores.includes(scoreNum)) {
+        console.log(`unique score`);
+        highScores.push(scoreNum);
+        highScores.sort((a,b) => b -a); // argument sorts the array descending instead of ascending
+        localStorage.setItem(`highScores`, JSON.stringify(highScores));
 
-    console.log(JSON.parse(localStorage.getItem(`highScores`)));
-    displayScores();
+        console.log(JSON.parse(localStorage.getItem(`highScores`)));
+        displayScores();
+    }   
 }
 
 function displayScores() {
