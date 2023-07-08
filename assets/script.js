@@ -21,7 +21,7 @@ const resetBtn = document.querySelector("#reset")
 
 let score = 0;
 let letterGrade = "";
-let timeLeft = 10; // TO-DO: Implement Timer function to remove seconds from timer when incorrect answer chosen.
+let timeLeft = 120; // TO-DO: Implement Timer function to remove seconds from timer when incorrect answer chosen.
 let highScores = [];
 
 let currentQuestion = 1;
@@ -314,25 +314,25 @@ function gradeQuiz() {
     resultsDisplay.style.visibility = 'visible';
 
     switch (true) {
-        case (score == 10):
+        case (score == 17):
             letterGrade = 'A+';
             letterGradeDisplay.textContent = `Perfect Score! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             resultsDisplay.style.color = 'black';
             break;
-        case (score == 9):
+        case (score >= 13):
             letterGrade = 'A';
             letterGradeDisplay.textContent = `Great Job! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             resultsDisplay.style.color = 'black';
             break;
-        case (score == 8):
+        case (score >= 10):
             letterGrade = 'B';
             letterGradeDisplay.textContent = `Not bad! Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'green';
             resultsDisplay.style.color = 'white';
             break;
-        case (score == 7):
+        case (score >= 7):
             letterGrade = 'C';
             letterGradeDisplay.textContent = `You did alright. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightyellow';
@@ -359,7 +359,6 @@ function gradeQuiz() {
 }
 
 function updateHighScores(scoreNum) {
-
     highScores.push(scoreNum);
     highScores.sort()
     localStorage.setItem(`highScores`, JSON.stringify(highScores));
