@@ -325,37 +325,37 @@ function gradeQuiz() {
     switch (true) {
         case (score == 17):
             letterGrade = 'A+';
-            letterGradeDisplay.textContent = `Perfect Score! ${score} out of 17. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `Perfect Score! ${score}pts out of 17pts. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             resultsDisplay.style.color = 'black';
             break;
         case (score >= 13):
             letterGrade = 'A';
-            letterGradeDisplay.textContent = `Great Job! ${score} out of 17. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `Great Job! ${score}pts out of 17pts. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightgreen';
             resultsDisplay.style.color = 'black';
             break;
         case (score >= 10):
             letterGrade = 'B';
-            letterGradeDisplay.textContent = `Not bad! ${score} out of 17. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `Not bad! ${score}pts out of 17pts. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'green';
             resultsDisplay.style.color = 'white';
             break;
         case (score >= 7):
             letterGrade = 'C';
-            letterGradeDisplay.textContent = `You did alright. ${score} out of 17. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `You did alright. ${score}pts out of 17pts. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'lightyellow';
             resultsDisplay.style.color = 'black';
             break;
         case (score == 6):
             letterGrade = 'D';
-            letterGradeDisplay.textContent = `You could have done better. ${score} out of 17. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `You could have done better. ${score}pts out of 17pts. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'brown';
             resultsDisplay.style.color = 'white';
             break;
         case (score <= 5):
             letterGrade = 'F';
-            letterGradeDisplay.textContent = `You failed. ${score} out of 17. Grade: ${letterGrade}`;
+            letterGradeDisplay.textContent = `You failed. ${score}pts out of 17pts. Grade: ${letterGrade}`;
             resultsDisplay.style.backgroundColor = 'red';
             resultsDisplay.style.color = 'white';
             break;
