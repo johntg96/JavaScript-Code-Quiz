@@ -25,6 +25,12 @@ let letterGrade = "";
 let timeLeft = 120; // TO-DO: Implement Timer function to remove seconds from timer when incorrect answer chosen.
 let highScores = [];
 
+// retrieve high score data from local storage if it exists and then inject high score data into HTML:
+if(localStorage.getItem(`highScores`) !== null) {
+    highScores = JSON.parse(localStorage.getItem(`highScores`));
+    displayScores();
+}
+
 let currentQuestion = 1;
 
 const questions = {
