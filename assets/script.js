@@ -226,14 +226,11 @@ function submitChoice() {
 }
 
 function viewQuestion(questionNum) {
-
-    console.log(timeLeft);
-
+    // change styling to show main content
     mainContainer.style.display = 'block';
     submitChoiceBtn.style.display = 'block';
     resultsDisplay.style.visibility = 'hidden';
 
-    console.log(`Current score: ${score}`);
     questionNumberDisplay.textContent = `Question ${currentQuestion}`;
 
     switch (questionNum) {
@@ -313,10 +310,7 @@ function viewQuestion(questionNum) {
 }
 
 function gradeQuiz() {
-    // This function will show the results
-    // possible points 17 out of 17.
-    // ..maybe assign letter grade to score and return it.
-
+    // show results screen and hide main content
     mainContainer.style.display = 'none';
     submitChoiceBtn.style.display = 'none';
     resultsDisplay.style.visibility = 'visible';
@@ -364,26 +358,33 @@ function gradeQuiz() {
     }
 
     console.log(`Your Score: ${score} out of 17\nLetter Grade: ${letterGrade}`);
-    updateHighScores(score);
+
+    let saveScores = confirm(`Would you like to save your score?`);
+    if (saveScores == true) {
+        updateHighScores(prompt(`Enter your initials: `), score);
+    } else {
+        // do nothing
+    }
+    
 }
 
-function updateHighScores(scoreNum) {
+function updateHighScores(initials, scoreNum) {
     // adds score to list if it is not already on it, sorts best to worst, then stores it in storage:
     if (!highScores.includes(scoreNum)) {
-        console.log(`unique score`);
         // add first 3 largest numbers of array to high score list:
+        // highScores.push({[scoreNum]:initials}); // pushes as an object, creating problems later trying to access
         highScores.push(scoreNum);
-        highScores.sort((a, b) => b -a)
+        highScores.sort((a, b) => b - a);
         // store top 3 scores in local storage:
         localStorage.setItem(`highScores`, JSON.stringify(highScores.slice(0,3)));
 
-        console.log(JSON.parse(localStorage.getItem(`highScores`)));
         displayScores();
     }   
 }
 
 function displayScores() {
-    highScoreList = JSON.parse(localStorage.getItem(`highScores`));
+    let highScoreList = JSON.parse(localStorage.getItem(`highScores`));
+
     highScore1Display.textContent = highScoreList[0];
     highScore2Display.textContent = highScoreList[1];
     highScore3Display.textContent = highScoreList[2];

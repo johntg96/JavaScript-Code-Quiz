@@ -1,6 +1,6 @@
 # module4_code_quiz
 ## Description
-available [here](https://johntg96.github.io/module4_code_quiz/)
+Available [here](https://johntg96.github.io/module4_code_quiz/)
 
 10 questions to answer under 120 seconds about Web Development (primarily JavaScript).
 Getting a question wrong results in a 20 second time deduction.
