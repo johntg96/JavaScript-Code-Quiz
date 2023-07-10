@@ -369,32 +369,49 @@ function gradeQuiz() {
 }
 
 function updateHighScores(initials, scoreNum) {
-    // adds score to list if it is not already on it, sorts best to worst, then stores it in storage:
-    if (!highScores.includes(scoreNum)) {
-        // add first 3 largest numbers of array to high score list:
-        // highScores.push({[scoreNum]:initials}); // pushes as an object, creating problems later trying to access
-        highScores.push(scoreNum);
-        highScores.sort((a, b) => b - a);
-        // store top 3 scores in local storage:
-        localStorage.setItem(`highScores`, JSON.stringify(highScores.slice(0,3)));
+    // Create an object to store the initials and score
+    const scoreObject = {
+        initials: initials,
+        score: scoreNum
+    };
+
+    let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+    // check if the score already exists
+    const scoreExists = highScores.some(score => score.score === scoreNum);
+
+    // if score does not exist, then add score to list, sort the list biggest to smallest, add the list to storage
+    if (!scoreExists) {
+        highScores.push(scoreObject);
+        highScores.sort((a, b) => b.score - a.score);
+
+        // store the top 3 scores in local storage
+        localStorage.setItem('highScores', JSON.stringify(highScores.slice(0, 3)));
 
         displayScores();
-    }   
+    }
 }
 
 function displayScores() {
-    let highScoreList = JSON.parse(localStorage.getItem(`highScores`));
+    let highScoreList = JSON.parse(localStorage.getItem('highScores'));
 
-    highScore1Display.textContent = highScoreList[0];
-    highScore2Display.textContent = highScoreList[1];
-    highScore3Display.textContent = highScoreList[2];
+    if (highScoreList.length === 1) {
+        highScore1Display.textContent = highScoreList[0].initials + ' - ' + highScoreList[0].score;
+    } else if (highScoreList.length === 2) {
+        highScore1Display.textContent = highScoreList[0].initials + ' - ' + highScoreList[0].score;
+        highScore2Display.textContent = highScoreList[1].initials + ' - ' + highScoreList[1].score;
+    } else {
+        highScore1Display.textContent = highScoreList[0].initials + ' - ' + highScoreList[0].score;
+        highScore2Display.textContent = highScoreList[1].initials + ' - ' + highScoreList[1].score;
+        highScore3Display.textContent = highScoreList[2].initials + ' - ' + highScoreList[2].score;
+    }
 }
 
 function clearHighScores() {
     localStorage.clear();
 }
 
-// clearHighScores();
+// clearHighScores(); // This function can be called later by a "clearHighScoresBtn" button when needed, etc.
 
 submitChoiceBtn.addEventListener("click", submitChoice);
 
